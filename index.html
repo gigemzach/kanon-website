@@ -237,7 +237,7 @@
 
     /* ===== HERO ===== */
     .hero {
-      padding: 160px 0 100px;
+      padding: 140px 0 80px;
       background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
       position: relative;
       overflow: hidden;
@@ -254,9 +254,29 @@
       background: radial-gradient(circle, rgba(196,154,60,0.06) 0%, transparent 70%);
     }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
     .hero-content {
-      max-width: 680px;
+      max-width: 540px;
       position: relative;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(27,58,92,0.08);
+      mix-blend-mode: multiply;
+      filter: sepia(15%) contrast(1.05);
     }
 
     .hero-eyebrow {
@@ -488,38 +508,45 @@
       border: 1px solid var(--border);
     }
 
-    .about-visual .big-logo .logo-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 42px;
-      letter-spacing: 8px;
-      color: var(--navy);
+    .about-origin {
+      max-width: 360px;
     }
 
-    .about-visual .big-logo .logo-rule {
-      width: 48px;
-      height: 2px;
+    .origin-word {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 36px;
+      color: var(--navy);
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+    }
+
+    .origin-pronunciation {
+      font-size: 14px;
+      color: var(--stone);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .origin-divider {
+      width: 40px;
+      height: 1.5px;
       background: var(--gold);
-      margin: 12px auto;
+      margin: 0 auto 20px;
       border-radius: 1px;
     }
 
-    .about-visual .big-logo .logo-tag {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--stone);
+    .origin-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 14px;
+      text-align: left;
     }
 
-    .about-visual .mission {
-      font-family: 'DM Sans', sans-serif;
+    .origin-text.origin-bold {
+      font-weight: 600;
+      color: var(--navy);
       font-size: 15px;
-      font-weight: 400;
-      color: var(--text-secondary);
-      margin-top: 32px;
-      max-width: 280px;
-      line-height: 1.7;
-      text-align: center;
     }
 
     /* ===== CONTACT ===== */
@@ -890,6 +917,13 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .hero-image { display: none; }
+
       .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -946,13 +980,18 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Licensed CPA &middot; Houston, TX</div>
-        <h1>Expert Tax and Financial Guidance, Built Around You</h1>
-        <p>Kanon Tax & Advisory simplifies complex financial topics for individuals and small businesses with clarity, confidence, and a defined plan.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get In Touch</a>
-          <a href="#services" class="btn btn-outline">View Our Services</a>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">Licensed CPA &middot; Houston, TX</div>
+          <h1>Expert Tax and Financial Guidance, Built Around You</h1>
+          <p>Kanon Tax & Advisory simplifies complex financial topics for individuals and small businesses with clarity, confidence, and a defined plan.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+            <a href="#services" class="btn btn-outline">View Our Services</a>
+          </div>
+        </div>
+        <div class="hero-image reveal">
+          <img src="blueprint.jpg" alt="Architectural blueprint drawing — precision and structure" loading="eager">
         </div>
       </div>
     </div>
@@ -1039,12 +1078,14 @@
           </div>
         </div>
         <div class="about-visual reveal">
-          <div class="big-logo">
-            <div class="logo-name">KANON</div>
-            <div class="logo-rule"></div>
-            <div class="logo-tag">Tax & Advisory</div>
+          <div class="about-origin">
+            <div class="origin-word">κανών</div>
+            <div class="origin-pronunciation">kanōn · (KAY-nun)</div>
+            <div class="origin-divider"></div>
+            <p class="origin-text">The name Kanon comes from the ancient Greek word for a measuring rod — the straight-edge a carpenter used to ensure a foundation was perfectly level. If the measure was off at the start, the structure wouldn't stand.</p>
+            <p class="origin-text origin-bold">At Kanon Advisory, we provide the measure.</p>
+            <p class="origin-text">We take the technical complexity of tax strategy and financial oversight off your shoulders so that your foundation is level. We don't just manage numbers — we set the foundation so you can focus on the life you're building on top of it.</p>
           </div>
-          <div class="mission">We exist to simplify the complex, so you can focus on what matters most.</div>
         </div>
       </div>
     </div>
@@ -1193,7 +1234,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2025 Kanon Tax & Advisory. All rights reserved.</span>
+        <span>&copy; 2026 Kanon Tax & Advisory. All rights reserved.</span>
         <div class="footer-legal">
           <a href="#" onclick="openLegal('privacy'); return false;">Privacy Policy</a>
           <a href="#" onclick="openLegal('terms'); return false;">Terms & Conditions</a>
@@ -1208,7 +1249,7 @@
       <button class="legal-close" onclick="closeLegal('privacy')">&times;</button>
       <h2>Privacy Policy</h2>
       <p class="legal-date">Effective Date: March 18, 2026 &middot; Last Updated: March 18, 2026</p>
-      <p>At Kanon Tax & Advisory ("we", "our", or "us"), a division of Gorhum Enterprises, LLC, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information in accordance with federal and state privacy regulations, including IRS standards for tax preparers.</p>
+      <p>At Kanon Tax & Advisory ("we", "our", or "us"), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information in accordance with federal and state privacy regulations, including IRS standards for tax preparers.</p>
 
       <h3>1. Information We Collect</h3>
       <p>We may collect the following types of information:</p>
