@@ -547,6 +547,9 @@
       font-weight: 600;
       color: var(--navy);
       font-size: 15px;
+      text-align: center;
+      margin: 8px 0 18px;
+      text-wrap: balance;
     }
 
     /* ===== CONTACT ===== */
@@ -635,6 +638,19 @@
       margin-bottom: 6px;
     }
 
+    .form-group label .required {
+      color: #8B3A3A;
+      margin-left: 2px;
+      font-weight: 600;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -660,6 +676,97 @@
     .form-group textarea {
       resize: vertical;
       min-height: 120px;
+    }
+
+    /* Multi-select dropdown */
+    .multiselect {
+      position: relative;
+    }
+
+    .multiselect-trigger {
+      width: 100%;
+      padding: 12px 40px 12px 16px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--white);
+      cursor: pointer;
+      text-align: left;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .multiselect-trigger.placeholder {
+      color: #8A8A85;
+    }
+
+    .multiselect-trigger::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid var(--text-secondary);
+      border-bottom: 1.5px solid var(--text-secondary);
+      transform: translateY(-70%) rotate(45deg);
+      transition: transform 0.2s;
+    }
+
+    .multiselect.open .multiselect-trigger::after {
+      transform: translateY(-30%) rotate(-135deg);
+    }
+
+    .multiselect.open .multiselect-trigger {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(196,154,60,0.1);
+    }
+
+    .multiselect-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 100;
+      max-height: 260px;
+      overflow-y: auto;
+      padding: 6px;
+    }
+
+    .multiselect.open .multiselect-panel {
+      display: block;
+    }
+
+    .multiselect-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-primary);
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .multiselect-option:hover {
+      background: var(--cream);
+    }
+
+    .multiselect-option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--navy);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin: 0;
     }
 
     .form-row {
@@ -1146,46 +1253,101 @@
         </div>
 
         <div class="contact-form reveal">
-          <!-- Replace YOUR_FORM_ID below with your Formspree form ID (e.g. xpzvqkdl) -->
-          <!-- Sign up free at https://formspree.io → create a form → copy the ID -->
           <form id="contactForm" action="https://formspree.io/f/maqlrlap" method="POST" onsubmit="handleSubmit(event)">
             <!-- Honeypot field for spam protection — do not remove -->
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_subject" value="New inquiry from kanonadvisory.com">
+            <p class="form-note"><span style="color:#C0392B;">*</span> Required fields</p>
             <div class="form-row">
               <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <label for="firstName">First Name<span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  oninvalid="this.setCustomValidity('Please enter your first name')"
+                  oninput="this.setCustomValidity('')">
               </div>
               <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <label for="lastName">Last Name<span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  oninvalid="this.setCustomValidity('Please enter your last name')"
+                  oninput="this.setCustomValidity('')">
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+              <label for="email">Email<span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                oninvalid="this.setCustomValidity('Please enter a properly formatted email address (e.g. name@example.com)')"
+                oninput="this.setCustomValidity('')">
             </div>
             <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone">
+              <label for="phone">Phone<span class="required">*</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="(713) 555-1234"
+                maxlength="14"
+                pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                oninput="formatPhone(this); this.setCustomValidity('')"
+                oninvalid="this.setCustomValidity('Please enter a complete phone number including area code')">
             </div>
             <div class="form-group">
-              <label for="service">Service of Interest</label>
-              <select id="service" name="service">
-                <option value="">Select a service...</option>
-                <option value="tax-prep">Tax Preparation & Planning</option>
-                <option value="consulting">Financial Consulting</option>
-                <option value="bookkeeping">Bookkeeping Solutions</option>
-                <option value="business">Small Business Advisory</option>
-                <option value="wealth">Wealth & Legacy Planning</option>
-                <option value="resolution">Tax Resolution & Relief</option>
-                <option value="other">Other</option>
-              </select>
+              <label>Service of Interest <span style="font-weight:400; color:var(--text-light); font-size:12px;">(select all that apply)</span></label>
+              <div class="multiselect" id="servicesSelect">
+                <button type="button" class="multiselect-trigger placeholder" id="servicesTrigger" onclick="toggleMultiselect()">Select services...</button>
+                <div class="multiselect-panel">
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Tax Preparation & Planning" onchange="updateMultiselectLabel()">
+                    Tax Preparation & Planning
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Financial Consulting" onchange="updateMultiselectLabel()">
+                    Financial Consulting
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Bookkeeping Solutions" onchange="updateMultiselectLabel()">
+                    Bookkeeping Solutions
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Small Business Advisory" onchange="updateMultiselectLabel()">
+                    Small Business Advisory
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Wealth & Legacy Planning" onchange="updateMultiselectLabel()">
+                    Wealth & Legacy Planning
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Tax Resolution & Relief" onchange="updateMultiselectLabel()">
+                    Tax Resolution & Relief
+                  </label>
+                  <label class="multiselect-option">
+                    <input type="checkbox" name="services[]" value="Other / Not Sure" onchange="updateMultiselectLabel()">
+                    Other / Not Sure
+                  </label>
+                </div>
+              </div>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us a bit about what you're looking for..."></textarea>
+              <label for="message">Message<span class="required">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell us a bit about what you're looking for..."
+                required
+                oninvalid="this.setCustomValidity('Please enter a brief message about what you\'re looking for')"
+                oninput="this.setCustomValidity('')"></textarea>
             </div>
             <button type="submit" class="form-submit">Send Message</button>
           </form>
@@ -1382,6 +1544,54 @@
 
     revealElements.forEach(el => revealObserver.observe(el));
 
+    // ===== Multiselect dropdown =====
+    function toggleMultiselect() {
+      document.getElementById('servicesSelect').classList.toggle('open');
+    }
+
+    function updateMultiselectLabel() {
+      const checked = document.querySelectorAll('#servicesSelect input[type="checkbox"]:checked');
+      const trigger = document.getElementById('servicesTrigger');
+      if (checked.length === 0) {
+        trigger.textContent = 'Select services...';
+        trigger.classList.add('placeholder');
+      } else if (checked.length === 1) {
+        trigger.textContent = checked[0].value;
+        trigger.classList.remove('placeholder');
+      } else {
+        trigger.textContent = checked.length + ' services selected';
+        trigger.classList.remove('placeholder');
+      }
+    }
+
+    // Close multiselect when clicking outside
+    document.addEventListener('click', (e) => {
+      const ms = document.getElementById('servicesSelect');
+      if (ms && !ms.contains(e.target)) {
+        ms.classList.remove('open');
+      }
+    });
+
+    // ===== Phone number auto-formatting =====
+    function formatPhone(input) {
+      // Strip all non-digit characters
+      let digits = input.value.replace(/\D/g, '');
+      // Cap at 10 digits
+      digits = digits.substring(0, 10);
+
+      let formatted = '';
+      if (digits.length === 0) {
+        formatted = '';
+      } else if (digits.length <= 3) {
+        formatted = '(' + digits;
+      } else if (digits.length <= 6) {
+        formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3);
+      } else {
+        formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6);
+      }
+      input.value = formatted;
+    }
+
     // ===== Contact form handler =====
     function handleSubmit(e) {
       e.preventDefault();
@@ -1431,6 +1641,7 @@
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+
 
     function closeLegal(type) {
       const overlay = document.getElementById(type + 'Overlay');
