@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kanonadvisory.com/sitemap.xml
