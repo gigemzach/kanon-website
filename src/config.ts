@@ -14,7 +14,6 @@ export const TSBPA_FIRM_LICENSED = false;
 
 export const FIRM = {
   name: 'Kanon Tax & Advisory',
-  legalEntity: 'Gorhum Enterprises, LLC',
   // Address published on the website. It is never emitted as a plaintext
   // mailto: in the served HTML — the contact page assembles it in the browser
   // from data attributes, so a harvester reading the source finds nothing.

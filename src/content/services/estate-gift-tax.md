@@ -3,9 +3,9 @@ title: "Estate & Gift Tax Planning | Kanon Tax & Advisory"
 navTitle: "Estate & Gift Tax"
 description: "Estate and gift tax planning and compliance, basis planning, and fiduciary return preparation, coordinated with your attorney and adviser."
 order: 6
-cluster: transitions
+cluster: advisory
 icon: people
-lede: "The tax mechanics behind the documents your attorney drafted."
+lede: "The tax planning that sits alongside the documents your attorney drafted."
 ---
 
 Estate planning is a legal exercise. Estate *tax* planning is an accounting one, and the two need to agree with each other.

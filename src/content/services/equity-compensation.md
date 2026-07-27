@@ -2,15 +2,15 @@
 title: "Equity Compensation Tax Planning | Kanon Tax & Advisory"
 navTitle: "Equity Compensation"
 description: "Tax planning and return preparation for RSUs, ISOs, NQSOs, ESPP, and performance share awards. Houston-based CPA serving energy and technology employees nationwide."
-order: 1
-cluster: transitions
+order: 5
+cluster: advisory
 icon: bolt
-lede: "Your equity vested. Your withholding did not keep up. Here is what actually happens on the return."
+lede: "RSUs, stock options, and ESPP carry tax consequences that catch people off guard. We help you see them coming."
 ---
 
-Equity compensation is where otherwise straightforward returns go wrong. The award agreement is written by lawyers, the brokerage statement reports a cost basis that is frequently incomplete, and the withholding your employer applied was a flat supplemental rate that may bear little relationship to your actual marginal rate.
+Equity compensation is one of the most common places an otherwise straightforward return goes sideways. The award agreement is written by lawyers, the brokerage statement often reports an incomplete cost basis, and the withholding your employer applied was a flat supplemental rate that may have little to do with your actual tax rate.
 
-The result is predictable: a large balance due in April on income you already saw withheld, or a materially overstated capital gain because nobody adjusted basis for the amount already taxed as wages.
+The usual result is an unwelcome surprise in April — a balance due on income you already watched shares get withheld against, or an overstated gain because nobody adjusted basis for what was already taxed as wages. Both are avoidable with a little advance notice, which is most of what this work is.
 
 ## What we handle
 

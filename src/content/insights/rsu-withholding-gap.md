@@ -2,7 +2,7 @@
 title: "Why your RSUs left you with a tax bill even though shares were withheld"
 description: "The flat 22% supplemental withholding rate on equity compensation is not your tax rate. For most people with meaningful RSU income, the difference shows up in April."
 published: 2026-07-26
-cluster: transitions
+cluster: advisory
 relatedService: equity-compensation
 draft: true
 ---

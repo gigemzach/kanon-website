@@ -2,10 +2,10 @@
 title: "IRS Notice & Tax Resolution Help | Kanon Tax & Advisory"
 navTitle: "IRS Notices & Resolution"
 description: "Response to IRS notices including CP2000, examination correspondence, back taxes, and unfiled returns. Licensed CPA authorized to represent taxpayers before the IRS."
-order: 5
-cluster: core
+order: 7
+cluster: support
 icon: shield
-lede: "A notice is not an accusation, and most of them are answerable."
+lede: "A notice is not an accusation, and most of them are answerable. We'll tell you where you actually stand."
 ---
 
 An IRS notice arrives with a deadline, a proposed adjustment, and no explanation of how the number was calculated. Most people either pay it or ignore it. Both are frequently the wrong move.

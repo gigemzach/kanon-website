@@ -3,9 +3,9 @@ title: "Small Business Tax & Advisory | Kanon Tax & Advisory"
 navTitle: "Small Business Advisory"
 description: "Entity structuring, multi-state and multi-entity tax work, S-corp compensation analysis, and Texas franchise tax for businesses that outgrew a basic bookkeeping setup."
 order: 3
-cluster: complexity
+cluster: core
 icon: building
-lede: "For businesses that outgrew the bookkeeper but do not need a Big 4 engagement letter."
+lede: "For businesses that have outgrown a basic bookkeeping setup but don't need a Big 4 engagement letter."
 ---
 
 There is a gap in the market between a storefront tax preparer and a national firm with a six-figure minimum. Businesses land in it when they add a second entity, cross a state line, take on a partner, or start doing something their accounting system was never configured to handle.

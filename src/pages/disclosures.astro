@@ -6,23 +6,26 @@ import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
   title="Disclosures | Kanon Tax & Advisory"
   description="Professional disclosures for Kanon Tax & Advisory, including firm status, scope of services, and the limits of information published on this website."
   h1="Disclosures"
-  lede={`Last updated ${FIRM.legalUpdated}`}
+  lede="Professional disclosures governing this website and any engagement with Kanon Tax & Advisory."
+  eyebrow="Important information"
   crumbs={[{ href: '/', label: 'Home' }, { label: 'Disclosures' }]}
 >
   <section class="section" style="padding-top:24px;">
     <div class="container">
       <div class="prose">
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:28px;">
+          Last updated {FIRM.legalUpdated}
+        </p>
+
         <h2>Firm status</h2>
         {TSBPA_FIRM_LICENSED ? (
           <p>
             {FIRM.name} is a CPA firm licensed by the Texas State Board of Public Accountancy.
-            {FIRM.name} is a DBA of {FIRM.legalEntity}.
           </p>
         ) : (
           <>
             <p>
-              {FIRM.name} is a DBA of {FIRM.legalEntity}. Services are provided by a licensed
-              Certified Public Accountant.
+              Services are provided by a licensed Certified Public Accountant.
             </p>
             <p><strong>
               This firm is not a CPA firm and these services are not regulated by the Texas State Board
@@ -30,6 +33,12 @@ import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
             </strong></p>
           </>
         )}
+
+        <h2>Scope of this website</h2>
+        <p>
+          Everything below applies to this website and to any engagement with {FIRM.name}. It is
+          collected here rather than repeated on every page.
+        </p>
 
         <h2>No attest services</h2>
         <p>

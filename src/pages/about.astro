@@ -2,75 +2,67 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Zach Gorhum',
-  jobTitle: 'Certified Public Accountant',
-  worksFor: { '@id': 'https://kanonadvisory.com/#business' },
-  url: 'https://kanonadvisory.com/about/',
-  address: { '@type': 'PostalAddress', addressLocality: 'Houston', addressRegion: 'TX', addressCountry: 'US' },
-};
 ---
 <PageLayout
   title="About | Kanon Tax & Advisory"
   description="Kanon Tax & Advisory is an independent tax and advisory practice in Houston, Texas, run by a licensed CPA with a Big 4 and consulting background."
-  h1="About the practice"
-  eyebrow="Who you're working with"
-  lede="A licensed CPA, working directly with a limited number of clients, on the situations that actually require one."
+  h1="Your Trusted Financial Partner"
+  eyebrow="About Kanon Tax & Advisory"
+  lede="A licensed CPA working directly with a limited number of clients, so you always know who is handling your work."
   crumbs={[{ href: '/', label: 'Home' }, { label: 'About' }]}
-  schema={schema}
 >
   <section class="section" style="padding-top:32px;">
     <div class="container">
       <div class="prose">
         <p>
-          I started Kanon Tax &amp; Advisory after a decade in Big 4 and independent consulting, working
-          on technical accounting and finance problems at companies considerably larger than the ones I
-          serve here. Foreign currency remeasurement, lease and revenue standards, ERP-era ledgers,
-          multi-entity consolidations.
+          As a licensed CPA with experience at leading professional services firms, I founded Kanon
+          Tax &amp; Advisory to bring institutional-quality financial guidance directly to individuals
+          and small businesses — without the complexity or overhead.
         </p>
         <p>
-          What that background is actually good for, applied at this scale, is judgment about which
-          problems are real. A great deal of small-business and individual tax work is people worrying
-          about the wrong things while something genuinely expensive goes unnoticed.
+          My passion is helping people face the often-intimidating world of taxes and finances, gain
+          clarity on their financial picture, and build a defined plan for their future. I believe
+          everyone deserves a knowledgeable advocate in their corner.
+        </p>
+        <p>
+          Whether you're an individual seeking tax preparation and planning, a couple thinking about
+          retirement and wealth, or a small business owner navigating growth — I take the time to learn
+          about you, your family, and the things that matter most to you.
         </p>
 
-        <h2>Why these situations</h2>
+        <h2>Where I tend to help most</h2>
         <p>
-          The returns that go wrong are rarely the complicated-looking ones. They are the ones where
-          something changed and nobody adjusted for it: equity that vested and was withheld at a flat
-          supplemental rate, a surviving spouse moving from joint to single brackets, a business that
-          picked up a remote employee in another state.
+          A decade in Big 4 and independent consulting means most of my work has been on the technical
+          side — foreign currency, lease and revenue standards, multi-entity consolidations, ERP-era
+          ledgers at companies considerably larger than the ones I serve here.
         </p>
         <p>
-          These situations have three things in common. They are high-stakes, they happen once so nobody
-          has practice at them, and the software-driven approach handles them badly because it is built
-          on the assumption that this year resembles last year.
+          Applied at this scale, what that experience is really good for is judgment about which
+          problems are worth your attention. Clients often find me in a year when something meaningful
+          has happened — equity vesting, a business adding an entity or a state, a change in the family.
+          Those are the years where having someone who has seen it before makes the most difference.
         </p>
 
         <h2>How the practice is set up</h2>
         <p>
-          Kanon Tax &amp; Advisory operates as a DBA of Gorhum Enterprises, LLC. I hold an active CPA
-          license and am authorized to represent taxpayers before the IRS.
+          I hold an active CPA license and am authorized to represent taxpayers before the IRS.
         </p>
         <p>
           <strong>We do not provide attest services.</strong> No audits, reviews, or compilations. If a
-          lender or investor requires one, I will say so directly and help you scope it with a firm that
-          performs them.
+          lender or investor requires one, I'll say so directly and help you find a firm that performs
+          them.
         </p>
         <p>
-          <strong>We are not a registered investment adviser.</strong> I advise on the tax consequences of
-          decisions. I do not recommend securities, manage assets, or tell you whether to hold or sell a
-          position. Where you have a financial adviser, I would rather coordinate with them than work
-          around them.
+          <strong>We are not a registered investment adviser.</strong> I advise on the tax consequences
+          of decisions. I don't recommend securities or manage assets. Where you already work with a
+          financial adviser, I'd much rather coordinate with them than work around them.
         </p>
 
         <h2>Working together</h2>
         <p>
-          Clients are across the country; nothing here requires you to be in Houston. Documents move
-          through an encrypted portal rather than email. Most conversations happen by video or phone, and
-          the first one is free and usually tells us both whether this is a fit.
+          I work with clients across the country, so nothing here requires you to be in Houston.
+          Documents move through an encrypted portal rather than email, and most conversations happen by
+          video or phone. The first one is free, and it usually tells us both whether this is a good fit.
         </p>
       </div>
     </div>

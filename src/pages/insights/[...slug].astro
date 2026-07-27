@@ -22,7 +22,7 @@ const schema = {
   description: entry.data.description,
   datePublished: entry.data.published.toISOString(),
   dateModified: (entry.data.updated ?? entry.data.published).toISOString(),
-  author: { '@type': 'Person', name: 'Zach Gorhum, CPA' },
+  author: { '@type': 'Organization', name: 'Kanon Tax & Advisory', '@id': 'https://kanonadvisory.com/#business' },
   publisher: { '@id': 'https://kanonadvisory.com/#business' },
   mainEntityOfPage: `https://kanonadvisory.com/insights/${entry.id}/`,
 };

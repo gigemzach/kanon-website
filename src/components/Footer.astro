@@ -1,7 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+import { FIRM } from '../config';
+
+// Hand-curated, not generated from the collection — the footer is a
+// short editorial list, not an index. Edit freely.
+const footerServices = [
+  { href: '/services/tax-preparation/',   label: 'Tax Preparation & Filing' },
+  { href: '/services/small-business/',    label: 'Small Business Advisory' },
+  { href: '/services/bookkeeping/',       label: 'Bookkeeping' },
+  { href: '/services/life-transitions/',  label: 'Life Transitions' },
+  { href: '/services/',                   label: 'Other Services' },
+];
 const year = new Date().getFullYear();
 ---
 <footer class="footer">
@@ -13,15 +21,14 @@ const year = new Date().getFullYear();
           <div class="logo-rule"></div>
           <div class="logo-tag">Tax &amp; Advisory</div>
         </div>
-        <p>Tax and advisory work for the years that don't look like last year — equity events, life transitions, and businesses that outgrew their bookkeeper.</p>
+        <p>Expert tax and financial guidance for individuals and small businesses. Simplifying complex financial topics with clarity, confidence, and a defined plan.</p>
       </div>
       <div>
         <h2>Services</h2>
         <ul class="footer-links">
-          {services.slice(0, 5).map((s) => (
-            <li><a href={`/services/${s.id}/`}>{s.data.navTitle}</a></li>
+          {footerServices.map((s) => (
+            <li><a href={s.href}>{s.label}</a></li>
           ))}
-          <li><a href="/services/">All services</a></li>
         </ul>
       </div>
       <div>
@@ -41,19 +48,6 @@ const year = new Date().getFullYear();
         </ul>
       </div>
     </div>
-
-    <p class="footer-disclaimer">
-      {!TSBPA_FIRM_LICENSED && (
-        <>
-          <strong>This firm is not a CPA firm and these services are not regulated by the Texas State
-          Board of Public Accountancy.</strong>{' '}
-        </>
-      )}
-      {FIRM.name} is a DBA of {FIRM.legalEntity}. We do not provide attest services. Nothing on this
-      website is investment advice or a recommendation to buy, sell, or hold any security;
-      {' '}{FIRM.name} is not a registered investment adviser. Content here is general information,
-      not advice for your specific situation. See our <a href="/disclosures/">disclosures</a>.
-    </p>
 
     <div class="footer-bottom">
       <span>&copy; {year} Kanon Tax &amp; Advisory. All rights reserved.</span>

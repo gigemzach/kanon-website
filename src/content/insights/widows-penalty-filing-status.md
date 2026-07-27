@@ -2,7 +2,7 @@
 title: "The widow's penalty: what changes on your tax return in year three"
 description: "After a spouse dies, the joint brackets last longer than most people expect — and then they stop. Here is the timing, and what it does to a similar income."
 published: 2026-07-26
-cluster: transitions
+cluster: advisory
 relatedService: life-transitions
 draft: true
 ---

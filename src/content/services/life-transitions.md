@@ -2,19 +2,21 @@
 title: "Tax Help After a Major Life Change | Kanon Tax & Advisory"
 navTitle: "Life Transitions"
 description: "Tax preparation and planning after the loss of a spouse, divorce, inheritance, retirement, severance, or a job change. Licensed CPA in Houston, TX."
-order: 2
-cluster: transitions
+order: 4
+cluster: advisory
 icon: compass
-lede: "The year everything changed is the year your return stops looking like the last one."
+lede: "Marriage, retirement, an inheritance, the loss of someone close. We handle the tax side with care, so you don't have to think about it."
 ---
 
-Most tax preparation assumes this year resembles last year. When something fundamental has shifted — a spouse died, a marriage ended, a parent left you an IRA, a job ended with a severance package — that assumption breaks, and the software-driven approach that worked fine for a decade starts producing wrong answers quietly.
+Most tax preparation quietly assumes this year looks like the last one. When something significant has changed in your life, that assumption stops holding — and the approach that worked fine for a decade can start producing the wrong answer without anyone noticing.
 
-These are also the years when people are least able to give the return their full attention, which is exactly when a knowledgeable second set of eyes matters most.
+These are also the years when a tax return is the last thing you want to think about. That's exactly when it helps to have someone in your corner who has seen the situation before, knows what to look for, and can handle it for you.
 
-## Loss of a spouse
+Below is what that looks like in the situations that come up most.
 
-The tax consequences of losing a spouse arrive in stages, and the hardest one arrives two years later.
+## After losing a spouse
+
+There is nothing simple about this year, and the tax side should not be something you have to manage on your own. The consequences also arrive in stages — the one with the largest financial impact usually shows up about two years later, when nothing else has changed.
 
 - The final joint return, and the separate fiduciary return if the estate generates income
 - Qualifying surviving spouse status while it lasts, and what happens when it ends — the compression from joint brackets to single brackets on a similar income is often the single largest tax change a widow or widower experiences
@@ -35,6 +37,6 @@ What is taxable and what is not, basis on inherited property, the reporting obli
 
 Severance and its withholding treatment, deferred compensation distributions, the sequencing of retirement account withdrawals, rollover mechanics and the traps in indirect rollovers, Social Security taxation, Medicare IRMAA thresholds, and the ACA premium credit cliff for anyone bridging to age 65 without employer coverage.
 
-## How this works
+## How we start
 
-We start with a conversation about what changed, not with a document checklist. The checklist comes second and it is different for every one of these situations.
+With a conversation about what's changed — not a document checklist. The checklist comes second, and it looks different for every one of these situations.
