@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-name">KANON</div>
+          <div class="logo-rule"></div>
+          <div class="logo-tag">Tax &amp; Advisory</div>
+        </div>
+        <p>Tax and advisory work for the years that don't look like last year — equity events, life transitions, and businesses that outgrew their bookkeeper.</p>
+      </div>
+      <div>
+        <h2>Services</h2>
+        <ul class="footer-links">
+          {services.slice(0, 5).map((s) => (
+            <li><a href={`/services/${s.id}/`}>{s.data.navTitle}</a></li>
+          ))}
+          <li><a href="/services/">All services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Firm</h2>
+        <ul class="footer-links">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul class="footer-links">
+          <li><a href="/contact/">Send a message</a></li>
+          <li><a href={`tel:${FIRM.phoneE164}`}>{FIRM.phone}</a></li>
+          <li>Houston, Texas</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-disclaimer">
+      {!TSBPA_FIRM_LICENSED && (
+        <>
+          <strong>This firm is not a CPA firm and these services are not regulated by the Texas State
+          Board of Public Accountancy.</strong>{' '}
+        </>
+      )}
+      {FIRM.name} is a DBA of {FIRM.legalEntity}. We do not provide attest services. Nothing on this
+      website is investment advice or a recommendation to buy, sell, or hold any security;
+      {' '}{FIRM.name} is not a registered investment adviser. Content here is general information,
+      not advice for your specific situation. See our <a href="/disclosures/">disclosures</a>.
+    </p>
+
+    <div class="footer-bottom">
+      <span>&copy; {year} Kanon Tax &amp; Advisory. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/disclosures/">Disclosures</a>
+      </div>
+    </div>
+  </div>
+</footer>

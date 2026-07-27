@@ -1,0 +1,46 @@
+---
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const links = [
+  { href: '/services/', label: 'Services' },
+  { href: '/insights/', label: 'Insights' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+const isCurrent = (href: string) => {
+  const clean = href.replace(/\/+$/, '') || '/';
+  return path === clean || (clean !== '/' && path.startsWith(clean));
+};
+---
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Kanon Tax &amp; Advisory — home">
+      <span class="logo-name">KANON</span>
+      <span class="logo-rule"></span>
+      <span class="logo-tag">Tax &amp; Advisory</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+      <li><a href="/contact/" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const t = document.getElementById('navToggle');
+  const l = document.getElementById('navLinks');
+  t?.addEventListener('click', () => {
+    const open = l?.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(!!open));
+  });
+  l?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      l.classList.remove('open');
+      t?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>

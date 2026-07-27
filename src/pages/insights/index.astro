@@ -1,0 +1,36 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('insights'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<PageLayout
+  title="Insights | Kanon Tax & Advisory"
+  description="Plain-language explanations of the tax situations that come up during equity events, life transitions, and small business growth."
+  h1="Insights"
+  eyebrow="Writing"
+  lede="Explanations of the situations clients actually call about, written before they call."
+  crumbs={[{ href: '/', label: 'Home' }, { label: 'Insights' }]}
+>
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p style="color:var(--text-secondary);">First articles are in progress.</p>
+      ) : (
+        <div class="article-list">
+          {posts.map((p) => (
+            <a class="article-item" href={`/insights/${p.id}/`}>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+              <div class="article-meta">{fmt(p.data.published)}</div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

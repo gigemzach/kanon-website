@@ -1,0 +1,57 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const insights = (await getCollection('insights'))
+  .filter((i) => !i.data.draft && i.data.relatedService === entry.id)
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: entry.data.navTitle,
+  description: entry.data.description,
+  url: `https://kanonadvisory.com/services/${entry.id}/`,
+  serviceType: entry.data.navTitle,
+  provider: { '@id': 'https://kanonadvisory.com/#business' },
+  areaServed: { '@type': 'Country', name: 'United States' },
+};
+---
+<PageLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  h1={entry.data.navTitle}
+  lede={entry.data.lede}
+  crumbs={[{ href: '/', label: 'Home' }, { href: '/services/', label: 'Services' }, { label: entry.data.navTitle }]}
+  schema={schema}
+>
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      <div class="prose"><Content /></div>
+
+      {insights.length > 0 && (
+        <div style="margin-top:56px;padding-top:32px;border-top:1px solid var(--border);max-width:68ch;">
+          <span class="cluster-tag">Related reading</span>
+          <div class="article-list">
+            {insights.map((i) => (
+              <a class="article-item" href={`/insights/${i.id}/`}>
+                <h3>{i.data.title}</h3>
+                <p>{i.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+  <CtaBand />
+</PageLayout>

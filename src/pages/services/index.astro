@@ -1,0 +1,36 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const groups = [
+  { key: 'transitions', label: 'Transitions', blurb: 'Individuals whose year changed shape — an equity event, a death, a divorce, an inheritance, a career change.' },
+  { key: 'complexity', label: 'Complexity', blurb: 'Businesses that added an entity, crossed a state line, or outgrew the accounting setup they started with.' },
+  { key: 'core', label: 'Core compliance', blurb: 'The annual work, and what to do when a notice shows up.' },
+];
+---
+<PageLayout
+  title="Services | Kanon Tax & Advisory"
+  description="Tax preparation, planning, and advisory services: equity compensation, life transitions, small business complexity, estate and gift tax, bookkeeping, and IRS notice resolution."
+  h1="Services"
+  eyebrow="What we do"
+  lede="Organized by the situation you're in rather than by the form number, because that's how people actually arrive here."
+  crumbs={[{ href: '/', label: 'Home' }, { label: 'Services' }]}
+>
+  {groups.map((g) => (
+    <section class="section" style="padding-top:40px;padding-bottom:40px;">
+      <div class="container">
+        <span class="cluster-tag">{g.label}</span>
+        <p style="color:var(--text-secondary);max-width:64ch;margin-bottom:28px;">{g.blurb}</p>
+        <div class="services-grid">
+          {all.filter((s) => s.data.cluster === g.key).map((s) => (
+            <ServiceCard href={`/services/${s.id}/`} title={s.data.navTitle} blurb={s.data.lede} icon={s.data.icon} />
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  <CtaBand />
+</PageLayout>

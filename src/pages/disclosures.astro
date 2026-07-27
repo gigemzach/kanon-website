@@ -1,0 +1,74 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
+---
+<PageLayout
+  title="Disclosures | Kanon Tax & Advisory"
+  description="Professional disclosures for Kanon Tax & Advisory, including firm status, scope of services, and the limits of information published on this website."
+  h1="Disclosures"
+  lede={`Last updated ${FIRM.legalUpdated}`}
+  crumbs={[{ href: '/', label: 'Home' }, { label: 'Disclosures' }]}
+>
+  <section class="section" style="padding-top:24px;">
+    <div class="container">
+      <div class="prose">
+        <h2>Firm status</h2>
+        {TSBPA_FIRM_LICENSED ? (
+          <p>
+            {FIRM.name} is a CPA firm licensed by the Texas State Board of Public Accountancy.
+            {FIRM.name} is a DBA of {FIRM.legalEntity}.
+          </p>
+        ) : (
+          <>
+            <p>
+              {FIRM.name} is a DBA of {FIRM.legalEntity}. Services are provided by a licensed
+              Certified Public Accountant.
+            </p>
+            <p><strong>
+              This firm is not a CPA firm and these services are not regulated by the Texas State Board
+              of Public Accountancy.
+            </strong></p>
+          </>
+        )}
+
+        <h2>No attest services</h2>
+        <p>
+          {FIRM.name} does not perform audits, reviews, compilations, or any other attest engagement,
+          and does not offer to. If a lender, investor, or regulator requires an attest report, we will
+          say so and help you engage a firm that provides them.
+        </p>
+
+        <h2>Not investment advice</h2>
+        <p>
+          {FIRM.name} is not a registered investment adviser and does not provide investment advice.
+          Nothing on this website or in any engagement is a recommendation to buy, sell, or hold a
+          security, to exercise or refrain from exercising an equity award, or to allocate assets in any
+          particular way. Where we discuss equity compensation, retirement distributions, or inherited
+          assets, we are addressing the tax consequences of those events. Decisions about the underlying
+          investments belong with you and, where you have one, your investment adviser.
+        </p>
+
+        <h2>Not legal advice</h2>
+        <p>
+          We are not attorneys and do not provide legal advice or draft legal documents. Estate and
+          entity work is performed alongside your attorney.
+        </p>
+
+        <h2>Information on this website</h2>
+        <p>
+          Articles and service descriptions on this site are general information, current as of the date
+          shown, and are not advice for your particular situation. Tax law changes, and outcomes depend
+          on facts that a web page cannot know. Do not act on anything here without professional advice
+          addressing your circumstances. Reading this site, or contacting us through it, does not create
+          a client relationship — that begins only when we both sign an engagement letter.
+        </p>
+
+        <h2>Results</h2>
+        <p>
+          We make no guarantee of any particular tax outcome, refund amount, penalty abatement, or
+          resolution of a matter before any taxing authority.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

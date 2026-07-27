@@ -1,0 +1,65 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('insights')).filter((p) => !p.data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const services = await getCollection('services');
+const related = services.find((s) => s.id === entry.data.relatedService);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.published.toISOString(),
+  dateModified: (entry.data.updated ?? entry.data.published).toISOString(),
+  author: { '@type': 'Person', name: 'Zach Gorhum, CPA' },
+  publisher: { '@id': 'https://kanonadvisory.com/#business' },
+  mainEntityOfPage: `https://kanonadvisory.com/insights/${entry.id}/`,
+};
+---
+<PageLayout
+  title={`${entry.data.title} | Kanon Tax & Advisory`}
+  description={entry.data.description}
+  h1={entry.data.title}
+  crumbs={[{ href: '/', label: 'Home' }, { href: '/insights/', label: 'Insights' }, { label: entry.data.title }]}
+  schema={schema}
+>
+  <section class="section" style="padding-top:24px;">
+    <div class="container">
+      <div class="article-meta" style="margin-bottom:28px;">
+        Published {fmt(entry.data.published)}
+        {entry.data.updated && <> &middot; Updated {fmt(entry.data.updated)}</>}
+      </div>
+      <div class="prose">
+        <Content />
+        <p style="margin-top:40px;padding-top:24px;border-top:1px solid var(--border);font-size:14px;color:var(--text-light);">
+          This article is general information current as of the date shown. It is not advice for your
+          specific situation, and tax law changes. See our <a href="/disclosures/">disclosures</a>.
+        </p>
+      </div>
+
+      {related && (
+        <div style="margin-top:40px;max-width:68ch;">
+          <span class="cluster-tag">Related service</span>
+          <div class="article-list">
+            <a class="article-item" href={`/services/${related.id}/`}>
+              <h3>{related.data.navTitle}</h3>
+              <p>{related.data.lede}</p>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+  <CtaBand />
+</PageLayout>

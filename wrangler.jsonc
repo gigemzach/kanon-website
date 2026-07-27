@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kanonwebsite",
+
+  // Matches the compatibility date already set on the Worker.
+  "compatibility_date": "2026-07-23",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // No "main" key: this is an assets-only Worker. There is no server code,
+  // so every request is served straight from the built files.
+  "assets": {
+    // Where `npm run build` puts the site. This is the setting that replaces
+    // the "Build output directory" field a Pages project would have.
+    "directory": "./dist",
+
+    // Serve the nearest 404.html (built from src/pages/404.astro) for any
+    // URL that doesn't match a file. Without this, unmatched URLs return a
+    // bare 404 with no page.
+    "not_found_handling": "404-page"
+  }
+}

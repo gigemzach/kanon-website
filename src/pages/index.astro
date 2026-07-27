@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { FIRM } from '../config';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'AccountingService',
+  '@id': 'https://kanonadvisory.com/#business',
+  name: 'Kanon Tax & Advisory',
+  description:
+    'Tax preparation, planning, and advisory for individuals navigating equity compensation and major life transitions, and for small businesses with multi-entity or multi-state complexity.',
+  url: 'https://kanonadvisory.com',
+  telephone: '+17135613888',
+  faxNumber: '+13462504817',
+  image: 'https://kanonadvisory.com/og-image.png',
+  address: { '@type': 'PostalAddress', addressLocality: 'Houston', addressRegion: 'TX', addressCountry: 'US' },
+  areaServed: [
+    { '@type': 'City', name: 'Houston' },
+    { '@type': 'State', name: 'Texas' },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  priceRange: '$$',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Tax & Advisory Services',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.data.navTitle,
+        description: s.data.description,
+        url: `https://kanonadvisory.com/services/${s.id}/`,
+      },
+    })),
+  },
+};
+---
+<BaseLayout
+  title="Kanon Tax & Advisory | Equity Comp, Life Transitions & Small Business Tax | Houston, TX"
+  description="Licensed CPA in Houston, TX. Tax preparation and planning for equity compensation, major life transitions, and small businesses with real complexity. Serving clients nationwide."
+  schema={schema}
+>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">Licensed CPA &middot; Houston, TX</div>
+          <h1>For the years that don't look like last year</h1>
+          <p class="lede">
+            Equity that vested. A spouse who died. A business that outgrew its bookkeeper. Kanon Tax
+            &amp; Advisory handles the returns where the software-driven approach quietly stops working.
+          </p>
+          <div class="hero-actions">
+            <a href="/contact/" class="btn btn-primary">Start a conversation</a>
+            <a href="/services/" class="btn btn-outline">See what we do</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="/blueprint.jpg" width="820" height="580" alt="Architectural blueprint drawing" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">What we do</div>
+        <h2>Two kinds of complicated</h2>
+        <p>
+          Most tax preparation assumes this year resembles the last one. These are the situations where
+          that assumption breaks.
+        </p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <ServiceCard
+            href={`/services/${s.id}/`}
+            title={s.data.navTitle}
+            blurb={s.data.lede}
+            icon={s.data.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="about-split">
+        <div>
+          <div class="eyebrow">About</div>
+          <h2 style="font-size:clamp(26px,4vw,34px);color:var(--navy);margin-bottom:18px;">
+            Why the name
+          </h2>
+          <div class="prose">
+            <p>
+              <em>Kanon</em> comes from the ancient Greek word for a measuring rod &mdash; the straight-edge
+              a carpenter used to check that a foundation was level. If the measure was off at the start,
+              the structure would not stand.
+            </p>
+            <p>
+              The moments that matter most for that measurement are the ones where the structure changes:
+              a liquidity event, a death, a marriage ending, a business adding an entity or a state. Those
+              are the years worth getting right, and they are the years most likely to go wrong.
+            </p>
+            <p><a href="/about/">More about the practice &rarr;</a></p>
+          </div>
+        </div>
+        <div style="background:var(--cream);border-radius:16px;padding:48px;text-align:center;border:1px solid var(--border);">
+          <div style="font-family:'DM Serif Display',Georgia,serif;font-size:40px;color:var(--navy);letter-spacing:2px;">κανών</div>
+          <div style="font-size:14px;color:var(--stone);font-weight:500;margin:6px 0 20px;">kanōn &middot; (KAY-nun)</div>
+          <div style="width:40px;height:1.5px;background:var(--gold);margin:0 auto 20px;border-radius:1px;"></div>
+          <p style="font-size:15px;color:var(--navy);font-weight:600;line-height:1.7;">
+            We set the foundation level so you can focus on what you're building on top of it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  @media (max-width: 968px) {
+    .about-split { grid-template-columns: 1fr !important; gap: 36px !important; }
+  }
+</style>

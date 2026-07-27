@@ -1,0 +1,14 @@
+---
+interface Props { heading?: string; body?: string; }
+const {
+  heading = 'Not sure where you stand?',
+  body = 'Most people reach out mid-transition, before the numbers are settled. That is the right time to call, not after the return is due.',
+} = Astro.props;
+---
+<section class="cta-band">
+  <div class="container">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+    <a href="/contact/" class="btn btn-primary">Start a conversation</a>
+  </div>
+</section>

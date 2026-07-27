@@ -1,0 +1,76 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { TSBPA_FIRM_LICENSED, FIRM } from '../config';
+---
+<PageLayout
+  title="Terms of Use | Kanon Tax & Advisory"
+  description="Terms governing use of the Kanon Tax & Advisory website."
+  h1="Terms of use"
+  lede={`Last updated ${FIRM.legalUpdated}`}
+  crumbs={[{ href: '/', label: 'Home' }, { label: 'Terms' }]}
+>
+  <section class="section" style="padding-top:24px;">
+    <div class="container">
+      <div class="prose">
+        <p>
+          These terms govern your use of kanonadvisory.com. By using the site you accept them. They
+          govern the website only — the terms of any professional engagement are set out in a separate
+          engagement letter, which controls if the two ever conflict.
+        </p>
+
+        <h2>1. No client relationship</h2>
+        <p>
+          Using this site, or sending us a message through it, does not create a
+          client relationship and does not obligate either of us. That relationship begins only when we
+          have both signed an engagement letter. Until then, do not send confidential information and do
+          not rely on anything here as advice.
+        </p>
+
+        <h2>2. Professional disclaimer</h2>
+        <p>
+          Information on this site is general and informational.
+          {TSBPA_FIRM_LICENSED
+            ? ' While we are a licensed CPA firm, nothing published here constitutes tax, legal, or financial advice for your individual situation.'
+            : ' While our services are provided by a licensed CPA, nothing published here constitutes tax, legal, or financial advice for your individual situation.'}
+          Seek professional advice addressing your specific facts before acting. Our full
+          <a href="/disclosures/"> disclosures</a> describe the scope and limits of our services.
+        </p>
+
+        <h2>3. Accuracy and currency</h2>
+        <p>
+          Tax law changes frequently. Content is accurate to the best of our knowledge as of the date
+          shown on it and may be out of date when you read it. We are under no obligation to update it.
+        </p>
+
+        <h2>4. Intellectual property</h2>
+        <p>
+          Content on this site is owned by {FIRM.name} or its licensors. You may read, print, and share
+          it for personal, non-commercial use with attribution. You may not republish, sell, or
+          redistribute it, or use it to train a commercial model, without written permission.
+        </p>
+
+        <h2>5. Third-party links and services</h2>
+        <p>
+          We link to outside websites, and the contact form is processed by a third-party provider. We do
+          not control those services and are not responsible for their content or privacy practices.
+        </p>
+
+        <h2>6. Limitation of liability</h2>
+        <p>
+          The site is provided as-is. To the fullest extent permitted by law, we disclaim all warranties
+          and are not liable for any loss arising from your use of, or reliance on, this website. Nothing
+          here limits liability that cannot be limited by law, including for fraud.
+        </p>
+
+        <h2>7. Governing law</h2>
+        <p>These terms are governed by the laws of the State of Texas.</p>
+
+        <h2>8. Changes</h2>
+        <p>We may revise these terms. Continued use of the site after a change means you accept it.</p>
+
+        <h2>9. Contact</h2>
+        <p>Reach us through <a href="/contact/">our contact page</a>.</p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

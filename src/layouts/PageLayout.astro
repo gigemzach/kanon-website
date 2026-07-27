@@ -1,0 +1,27 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  lede?: string;
+  eyebrow?: string;
+  crumbs?: { href?: string; label: string }[];
+  schema?: object | object[];
+  noindex?: boolean;
+}
+const { title, description, h1, lede, eyebrow, crumbs, schema, noindex } = Astro.props;
+---
+<BaseLayout title={title} description={description} schema={schema} noindex={noindex}>
+  <section class="pagehead">
+    <div class="container">
+      {crumbs && <Breadcrumbs crumbs={crumbs} />}
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+      <h1>{h1}</h1>
+      {lede && <p class="lede">{lede}</p>}
+    </div>
+  </section>
+  <slot />
+</BaseLayout>

@@ -1,0 +1,106 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { FIRM } from '../config';
+---
+<PageLayout
+  title="Privacy Notice | Kanon Tax & Advisory"
+  description="How Kanon Tax & Advisory collects, uses, protects, and shares client information, including our privacy notice under the Gramm-Leach-Bliley Act."
+  h1="Privacy notice"
+  lede={`Last updated ${FIRM.legalUpdated}`}
+  crumbs={[{ href: '/', label: 'Home' }, { label: 'Privacy' }]}
+>
+  <section class="section" style="padding-top:24px;">
+    <div class="container">
+      <div class="prose">
+        <p>
+          Tax preparers are treated as financial institutions under the Gramm-Leach-Bliley Act, so this
+          notice serves two purposes: it is our GLBA privacy notice to clients, and it explains what
+          happens to information collected through this website.
+        </p>
+
+        <h2>Information we collect</h2>
+        <p>We collect nonpublic personal information about you from these sources:</p>
+        <ul>
+          <li><strong>From you</strong> — on organizers, engagement letters, and in conversation: identifying information, taxpayer identification numbers, dates of birth, marital and dependent information, income, deductions, and financial account information</li>
+          <li><strong>From your documents</strong> — W-2s, 1099s, K-1s, brokerage and equity award statements, closing documents, and prior-year returns</li>
+          <li><strong>From third parties you authorize</strong> — your attorney, financial adviser, prior preparer, or payroll provider</li>
+          <li><strong>From this website</strong> — the name, email, phone number, and message you submit through the contact form, plus standard server and analytics data such as IP address and browser type</li>
+        </ul>
+
+        <h2>How we use it</h2>
+        <p>
+          To prepare and file returns, perform the advisory or bookkeeping work you engaged us for,
+          communicate with you, meet our own recordkeeping and professional obligations, and protect
+          against fraud.
+        </p>
+        <p>
+          We do not use or disclose your tax return information for any purpose other than preparing your
+          return without your prior written consent, as required by Internal Revenue Code section 7216.
+          Where a use requires that consent, we will ask for it separately and specifically.
+        </p>
+
+        <h2>What we share, and with whom</h2>
+        <p><strong>We do not sell your information. We do not share it with anyone for their own marketing.</strong></p>
+        <p>We disclose information only:</p>
+        <ul>
+          <li>To taxing authorities, as necessary to file your returns or represent you</li>
+          <li>To service providers who help us deliver our services — our tax software, encrypted document portal, and e-file transmitter — each of which is contractually bound to protect it and use it only for that purpose</li>
+          <li>To people you specifically authorize in writing, such as your attorney, lender, or financial adviser</li>
+          <li>Where required by law, subpoena, or a professional standards body</li>
+        </ul>
+        <p>
+          Because we do not share your information with nonaffiliated third parties for their own use,
+          there is no sharing for you to opt out of. If that ever changes, we will notify you and give
+          you the opportunity to opt out before it takes effect.
+        </p>
+
+        <h2>How we protect it</h2>
+        <p>
+          We maintain a written information security program with administrative, technical, and physical
+          safeguards, as required by the FTC Safeguards Rule. In practice that includes encryption of
+          client data in transit and at rest, multi-factor authentication on systems that hold client
+          information, access limited to those who need it, and an encrypted client portal for exchanging
+          documents.
+        </p>
+        <p>
+          Please do not send Social Security numbers, account numbers, or tax documents by email or
+          through the website contact form. Use the portal.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          We retain client records for at least seven years, consistent with professional standards and
+          the periods during which returns may be examined or amended. Website inquiries that do not
+          become engagements are retained for a shorter period and then deleted.
+        </p>
+
+        <h2>Former clients</h2>
+        <p>
+          If you stop being a client, we continue to handle your information as described in this notice.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>
+          You may request a copy of the information we hold about you, ask us to correct it, and withdraw
+          an authorization you previously gave — though some records we are professionally or legally
+          required to keep. To make a request, email us.
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          This site uses no advertising or cross-site tracking cookies. Any analytics we run is limited to
+          aggregate traffic measurement, and you can block it in your browser without affecting the site.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          We will post any change to this notice here and update the date above. Clients also receive this
+          notice at the start of an engagement and annually thereafter.
+        </p>
+
+        <h2>Contact</h2>
+        <p>Questions about this notice? Reach us through <a href="/contact/">our contact page</a>.</p>
+      </div>
+    </div>
+  </section>
+</PageLayout>
