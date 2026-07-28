@@ -63,6 +63,28 @@ name is on it. Flip `draft: false` when you're satisfied.
 
 ---
 
+## Writing an article
+
+1. Copy `ARTICLE-TEMPLATE.md` into `src/content/insights/`
+2. Rename it — **the filename becomes the URL.** `widow-tax-brackets.md` -> `/insights/widow-tax-brackets/`
+3. Fill in the frontmatter, write the body in plain markdown
+4. Leave `draft: true` while you work. Nothing renders, no URL exists, it stays out of the sitemap.
+5. Flip to `draft: false`, commit, push. Live in ~90 seconds.
+
+Everything else is automatic: the article appears on `/insights/`, in the sitemap,
+in the RSS feed, gets `Article` schema and breadcrumbs, links to its service page,
+and gets "Keep reading" links to other articles in the same cluster.
+
+**Images inside an article:** put the file in `public/insights/` and reference it as
+`![alt text](/insights/chart.png)`.
+
+**A custom share image for one article:** same folder, then add
+`image: "/insights/chart.png"` to the frontmatter. Omit it and the site-wide
+`og-image.png` is used.
+
+**To unpublish:** set `draft: true` and push. The URL disappears. (If it was indexed,
+Google will drop it on the next crawl — better to revise than to delete.)
+
 ## Adding content
 
 **A new article** — drop a `.md` file in `src/content/insights/`:

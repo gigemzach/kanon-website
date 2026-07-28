@@ -15,6 +15,13 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month:
 const services = await getCollection('services');
 const related = services.find((s) => s.id === entry.data.relatedService);
 
+// Other articles in the same cluster — this is what keeps a reader moving
+// through the site instead of bouncing after one page.
+const siblings = (await getCollection('insights'))
+  .filter((p) => !p.data.draft && p.id !== entry.id && p.data.cluster === entry.data.cluster)
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf())
+  .slice(0, 3);
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -33,6 +40,7 @@ const schema = {
   h1={entry.data.title}
   crumbs={[{ href: '/', label: 'Home' }, { href: '/insights/', label: 'Insights' }, { label: entry.data.title }]}
   schema={schema}
+  image={entry.data.image}
 >
   <section class="section" style="padding-top:24px;">
     <div class="container">
@@ -47,6 +55,20 @@ const schema = {
           specific situation, and tax law changes. See our <a href="/disclosures/">disclosures</a>.
         </p>
       </div>
+
+      {siblings.length > 0 && (
+        <div style="margin-top:48px;max-width:68ch;">
+          <span class="cluster-tag">Keep reading</span>
+          <div class="article-list">
+            {siblings.map((s) => (
+              <a class="article-item" href={`/insights/${s.id}/`}>
+                <h3>{s.data.title}</h3>
+                <p>{s.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       {related && (
         <div style="margin-top:40px;max-width:68ch;">

@@ -12,6 +12,11 @@
 // and issues the firm license. Until then it must stay false.
 export const TSBPA_FIRM_LICENSED = false;
 
+// Google Ads / Analytics tag. Leave as an empty string and NO Google script
+// loads at all. Set it to your Ads conversion ID (e.g. 'AW-17037103996') or a
+// GA4 ID (e.g. 'G-XXXXXXX') and the tag loads sitewide.
+export const GOOGLE_TAG_ID = '';
+
 export const FIRM = {
   name: 'Kanon Tax & Advisory',
   // Address published on the website. It is never emitted as a plaintext

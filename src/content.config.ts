@@ -23,6 +23,10 @@ const insights = defineCollection({
     updated: z.coerce.date().optional(),
     cluster: z.enum(['core', 'advisory', 'support']),
     relatedService: z.string().optional(),
+    // Optional custom share image for this article. Put the file in
+    // public/insights/ and reference it as '/insights/name.png'.
+    // Omit it and the site-wide og-image.png is used.
+    image: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

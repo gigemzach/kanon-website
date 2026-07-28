@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { GOOGLE_TAG_ID } from '../config';
 
 interface Props {
   title: string;
@@ -9,10 +10,11 @@ interface Props {
   ogType?: string;
   schema?: object | object[];
   noindex?: boolean;
+  image?: string;
 }
-const { title, description, ogType = 'website', schema, noindex = false } = Astro.props;
+const { title, description, ogType = 'website', schema, noindex = false, image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL('/og-image.png', Astro.site).href;
+const ogImage = new URL(image ?? '/og-image.png', Astro.site).href;
 const blocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 <!doctype html>
@@ -45,6 +47,19 @@ const blocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Kanon Tax & Advisory — Insights" href="/rss.xml" />
+
+    {GOOGLE_TAG_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`} is:inline />
+        <script is:inline define:vars={{ id: GOOGLE_TAG_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', id);
+        </script>
+      </>
+    )}
     {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} is:inline />)}
   </head>
   <body>

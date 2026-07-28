@@ -11,10 +11,11 @@ interface Props {
   crumbs?: { href?: string; label: string }[];
   schema?: object | object[];
   noindex?: boolean;
+  image?: string;
 }
-const { title, description, h1, lede, eyebrow, crumbs, schema, noindex } = Astro.props;
+const { title, description, h1, lede, eyebrow, crumbs, schema, noindex, image } = Astro.props;
 ---
-<BaseLayout title={title} description={description} schema={schema} noindex={noindex}>
+<BaseLayout title={title} description={description} schema={schema} noindex={noindex} image={image}>
   <section class="pagehead">
     <div class="container">
       {crumbs && <Breadcrumbs crumbs={crumbs} />}

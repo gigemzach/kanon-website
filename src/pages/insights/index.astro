@@ -18,6 +18,9 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month:
 >
   <section class="section" style="padding-top:32px;">
     <div class="container">
+      <p style="margin-bottom:32px;font-size:14px;">
+        <a href="/rss.xml" style="color:var(--steel);">Subscribe via RSS &rarr;</a>
+      </p>
       {posts.length === 0 ? (
         <p style="color:var(--text-secondary);">First articles are in progress.</p>
       ) : (
